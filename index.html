@@ -27,7 +27,7 @@
             let colori = ['black', 'blue'];
             for (let i = 0; i < 9; i++){  //ciclo per disegnare 9 cerchi concentrici
                 fill(colori[i % 2]);  //alterna il colore per ogni cerchio
-                circle(centroX, centroY, diametro - i * 40);
+                circle(centroX, centroY, diametro - i * 40); //disegna un cerchio con diametro diminuito
             }
         }
 
