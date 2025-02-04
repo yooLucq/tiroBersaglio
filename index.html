@@ -7,23 +7,37 @@
 </head>
 <body>
     <script>
-        let diametro = 400
+        let diametro = 400;
+        let centroX, centroY;
+        let raggio;
 
-        function setup() {
-            createCanvas(600, 600);
+        //Funzione di setup eseguita all'inizio
+        function setup(){
+            createCanvas (600, 600);
             background(220);
-            fill(0, 0, 0)
-            circle(width / 2, height / 2, diametro);
-            fill(255, 255, 255)
-            circle(width / 2, height / 2, diametro - 40);
+            centroX = width / 2;
+            centroY = height / 2;
+            raggio = diametro / 2;
+            disegnaBersaglio();
         }
 
-        function draw() {
 
+        //Funzione che disegna il bersaglio
+        function disegnaBersaglio(){
+            let colori = ['black', 'blue'];
+            for (let i = 0; i < 9; i++){  //ciclo per disegnare 9 cerchi concentrici
+                fill(colori[i % 2]);  //alterna il colore per ogni cerchio
+                circle(centroX, centroY, diametro - i * 40);
+            }
         }
 
-        function mouseClicked() {
-            
+        function mouseClicked(){
+            let distanza = dist(mouseX, mouseY, centroX, centroY); //Calcola la distanza tra il punto del clic e il centro del bersaglio
+            if (distanza <= raggio){
+                console.log("Hai centrato il bersaglio!!");
+            } else{
+                console.log("Non hai preso il bersaglio, ritenta!");
+            }
         }
     </script>
     <script src="static/js/p5.min.js"></script>
